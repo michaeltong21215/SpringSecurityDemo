@@ -18,7 +18,7 @@ import java.util.function.Function;
 public class AppTokenUtil implements Serializable {
     @Value("app.secret")
     private String secret;
-    private static final long EXPIRATION_MILLISECONDS = 1000;
+    private static final long EXPIRATION_MILLISECONDS = 5 * 60 * 60 * 3600;
 
     public String getUserNameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);

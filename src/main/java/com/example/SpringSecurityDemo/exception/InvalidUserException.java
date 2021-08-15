@@ -1,0 +1,7 @@
+package com.example.SpringSecurityDemo.exception;
+
+public class InvalidUserException extends Exception{
+    public InvalidUserException(String msg){
+        super(msg);
+    }
+}

@@ -2,6 +2,7 @@ package com.example.SpringSecurityDemo.service;
 
 import com.example.SpringSecurityDemo.model.MyUserPrincipal;
 import com.example.SpringSecurityDemo.model.User;
+import com.example.SpringSecurityDemo.model.UserDto;
 import com.example.SpringSecurityDemo.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,5 +28,12 @@ public class AuthUserDetailService implements UserDetailsService {
           return new MyUserPrincipal(user);
         }
         throw new UsernameNotFoundException(userName);
+    }
+
+    public User registerUser(UserDto user){
+        User newUser = new User();
+        newUser.setUsername(user.getUsername());
+        newUser.setPassword(user.getPassword());
+        return userRepository.save(newUser);
     }
 }
